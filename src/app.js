@@ -1,9 +1,9 @@
-import express from "express"
+import express from 'express';
 
-const app = express()
+const app = express();
 
-app.get("/", (req, res) => {
-  res.status(200).send("Hello from ACQUISITIONS-JSM!")
-})
+app.get('/', (req, res) => {
+  res.status(200).send('Hello from ACQUISITIONS-JSM!');
+});
 
-export default app
+export default app;

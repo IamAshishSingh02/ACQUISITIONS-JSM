@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Coverage reports
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# Database / ORM generated files
+drizzle/
+prisma/
+
+# Package lock files (optional)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Editor folders
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git folder
+.git/
+
+# Temporary files
+tmp/
+temp/
