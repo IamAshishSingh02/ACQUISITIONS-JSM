@@ -1,0 +1,155 @@
+# =================================================
+# NODE & PACKAGE MANAGERS
+# =================================================
+
+# Dependencies
+node_modules/
+
+# Package manager caches
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =================================================
+# ENVIRONMENT & SECRETS
+# =================================================
+
+# Environment files (never push secrets)
+.env
+.env.*
+!.env.example
+
+# Local override files
+local.env
+.npmrc
+
+# =================================================
+# BUILD OUTPUTS
+# =================================================
+
+# Vite / React build output
+dist/
+build/
+
+# Next.js
+.next/
+out/
+
+# Remix
+.build/
+
+# SvelteKit
+.svelte-kit/
+
+# TurboRepo
+.turbo/
+
+# =================================================
+# TYPESCRIPT
+# =================================================
+
+# TypeScript build cache
+*.tsbuildinfo
+.ts-node/
+
+# =================================================
+# TESTING & COVERAGE
+# =================================================
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Jest snapshots
+*.snap
+
+# Cypress / Playwright
+cypress/screenshots/
+cypress/videos/
+test-results/
+
+# =================================================
+# DOCKER
+# =================================================
+
+# Docker local override files
+docker-compose.override.yml
+
+# =================================================
+# KUBERNETES (Optional)
+# =================================================
+
+# Helm build output (if you use it later)
+charts/*.tgz
+
+# =================================================
+# EDITORS & IDE SETTINGS
+# =================================================
+
+# VS Code (keep only recommended shared configs)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# JetBrains IDEs
+.idea/
+
+# Workspace files
+*.code-workspace
+
+# Temporary editor swap files
+*.swp
+*.swo
+*~
+
+# =================================================
+# OS FILES
+# =================================================
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# =================================================
+# ARCHIVES & TEMP FILES
+# =================================================
+
+*.tgz
+*.tar.gz
+*.zip
+
+tmp/
+temp/
+
+# =================================================
+# DATABASE FILES (Optional)
+# =================================================
+
+*.sqlite
+*.db
+
+# =================================================
+# MISC
+# =================================================
+
+# ESLint cache
+.eslintcache
+
+# Node REPL history
+.node_repl_history
