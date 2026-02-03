@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "import": {
+  "imports": {
     "#config/*": "./src/config/*",
     "#controllers/*": "./src/controllers/*",
     "#middleware/*": "./src/middleware/*",
@@ -37,14 +37,17 @@
   "homepage": "https://github.com/IamAshishSingh02/ACQUISITIONS#readme",
   "dependencies": {
     "@neondatabase/serverless": "github:neondatabase/serverless",
+    "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
     "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
-    "winston": "^3.19.0"
+    "winston": "^3.19.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
