@@ -23,6 +23,7 @@ jobs:
     env:
       NODE_ENV: test
       NODE_OPTIONS: --experimental-vm-modules
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
     steps:
       - name: Checkout code
