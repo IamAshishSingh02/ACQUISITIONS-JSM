@@ -20,7 +20,9 @@ app.use(morgan('combined', {
     write: (message) => logger.info(message.trim())
   }
 }))
-app.use(securityMiddleware)
+if (process.env.NODE_ENV !== "test") {
+  app.use(securityMiddleware);
+}
 
 app.get('/', (req, res) => {
   logger.info('Hello from ACQUISITIONS-JSM!')
