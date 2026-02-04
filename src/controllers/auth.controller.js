@@ -1,9 +1,9 @@
-import logger from '../config/logger.js';
-import { authenticateUser, createUser } from '../services/auth.service.js';
-import { cookies } from '../utils/cookies.js';
-import { formatValidationError } from '../utils/format.js';
-import { jwttoken } from '../utils/jwt.js';
-import { signInSchema, signUpSchema } from '../validations/auth.validations.js';
+import logger from '#config/logger.js';
+import { authenticateUser, createUser } from '#services/auth.service.js';
+import { cookies } from '#utils/cookies.js';
+import { formatValidationError } from '#utils/format.js';
+import { jwttoken } from '#utils/jwt.js';
+import { signInSchema, signUpSchema } from '#validations/auth.validations.js';
 
 export const signUp = async (req, res, next) => {
   try{
