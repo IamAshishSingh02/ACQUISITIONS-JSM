@@ -10,6 +10,11 @@ on:
       - main
       - staging
 
+# ✅ Permissions for uploading artifacts + publishing reports
+permissions:
+  contents: read
+  checks: write
+
 jobs:
   test:
     name: Run Tests
@@ -32,38 +37,39 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # ✅ Run Jest Tests
+      # ✅ Run Jest Tests (FAILS WORKFLOW AUTOMATICALLY IF TESTS FAIL)
       - name: Run tests
-        id: tests
         run: npm test
-        continue-on-error: true
 
       # ✅ Upload coverage reports
       - name: Upload coverage reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage/
           retention-days: 30
 
-      # ✅ Upload JUnit test report (NEW)
+      # ✅ Upload JUnit test report
       - name: Upload test results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: junit-test-report
           path: reports/junit.xml
           retention-days: 30
 
-      # ✅ Display Proper Test Summary in GitHub UI (NEW)
+      # ✅ Publish Test Report (ONLY ON PUSH)
       - name: Publish Test Report
+        if: github.event_name == 'push'
         uses: dorny/test-reporter@v1
-        if: always()
+        continue-on-error: true
         with:
           name: Jest Test Results ✅
           path: reports/junit.xml
           reporter: jest-junit
 
-      # ✅ Generate coverage summary (Keep your existing summary logic)
+      # ✅ Generate coverage summary
       - name: Generate coverage summary
         if: always()
         run: |
@@ -85,14 +91,3 @@ jobs:
           else
             echo "⚠️ No coverage-summary.json found." >> $GITHUB_STEP_SUMMARY
           fi
-
-      # ✅ Annotate failures (Keep your step)
-      - name: Annotate test failures
-        if: steps.tests.outcome == 'failure'
-        run: |
-          echo "::error::Tests failed. Please review the output above."
-
-      # ✅ Fail workflow if tests failed
-      - name: Fail workflow if tests failed
-        if: steps.tests.outcome == 'failure'
-        run: exit 1
