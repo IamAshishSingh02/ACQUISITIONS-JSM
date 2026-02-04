@@ -6,16 +6,13 @@ const aj = arcjet({
     shield({ mode: 'LIVE' }),
     detectBot({
       mode: process.env.NODE_ENV === 'production' ? 'LIVE' : 'DRY_RUN',
-      allow: [
-        'CATEGORY:SEARCH_ENGINE',
-        'CATEGORY:PREVIEW',
-      ],
+      allow: ['CATEGORY:SEARCH_ENGINE', 'CATEGORY:PREVIEW'],
     }),
     slidingWindow({
       mode: 'LIVE',
       interval: '2s',
-      max: 5
-    })
+      max: 5,
+    }),
   ],
 });
 

@@ -55,9 +55,7 @@ export const requireRole = (...allowedRoles) => {
       });
     }
 
-    logger.info(
-      `Role access granted: ${req.user.email} (${req.user.role})`
-    );
+    logger.info(`Role access granted: ${req.user.email} (${req.user.role})`);
 
     next();
   };

@@ -19,12 +19,14 @@ const securityMiddleware = async (req, res, next) => {
         limit = 20;
     }
 
-    const client = aj.withRule(slidingWindow({
-      mode: 'LIVE',
-      interval: '1m',
-      max: limit,
-      name: `${role}-rate-limit`
-    }));
+    const client = aj.withRule(
+      slidingWindow({
+        mode: 'LIVE',
+        interval: '1m',
+        max: limit,
+        name: `${role}-rate-limit`,
+      })
+    );
 
     const decision = await client.protect(req);
 
@@ -33,11 +35,11 @@ const securityMiddleware = async (req, res, next) => {
         logger.warn('Bot request blocked', {
           ip: req.ip,
           userAgent: req.get('User-Agent'),
-          path: req.path
+          path: req.path,
         });
         return res.status(403).json({
           error: 'Forbidden',
-          message: 'Automated requests are not allowed'
+          message: 'Automated requests are not allowed',
         });
       }
 
@@ -46,11 +48,11 @@ const securityMiddleware = async (req, res, next) => {
           ip: req.ip,
           userAgent: req.get('User-Agent'),
           path: req.path,
-          method: req.method
+          method: req.method,
         });
         return res.status(403).json({
           error: 'Forbidden',
-          message: 'Request blocked by security policy'
+          message: 'Request blocked by security policy',
         });
       }
 
@@ -59,18 +61,21 @@ const securityMiddleware = async (req, res, next) => {
           ip: req.ip,
           userAgent: req.get('User-Agent'),
           path: req.path,
-          method: req.method
+          method: req.method,
         });
         return res.status(429).json({
           error: 'Too Many Requests',
-          message: 'Rate limit exceeded. Please try again later.'
+          message: 'Rate limit exceeded. Please try again later.',
         });
       }
     }
 
     next();
   } catch (e) {
-    logger.error('Arcjet middleware error', { error: e.message, stack: e.stack });
+    logger.error('Arcjet middleware error', {
+      error: e.message,
+      stack: e.stack,
+    });
     next();
   }
 };

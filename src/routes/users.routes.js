@@ -15,32 +15,12 @@ import {
 
 const router = Router();
 
-router.get(
-  '/',
-  authenticateToken,
-  requireRole('admin'),
-  fetchAllUsers
-);
+router.get('/', authenticateToken, requireRole('admin'), fetchAllUsers);
 
-router.get(
-  '/:id',
-  authenticateToken,
-  allowSelfOrAdmin,
-  fetchUserById
-);
+router.get('/:id', authenticateToken, allowSelfOrAdmin, fetchUserById);
 
-router.put(
-  '/:id',
-  authenticateToken,
-  allowSelfOrAdmin,
-  updateUserById
-);
+router.put('/:id', authenticateToken, allowSelfOrAdmin, updateUserById);
 
-router.delete(
-  '/:id',
-  authenticateToken,
-  requireRole('admin'),
-  deleteUserById
-);
+router.delete('/:id', authenticateToken, requireRole('admin'), deleteUserById);
 
 export default router;

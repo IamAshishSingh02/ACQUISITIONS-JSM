@@ -4,10 +4,10 @@ This document explains how to run the application using Docker in both developme
 
 ## Overview
 
-| Environment | Database | Compose File | Env File |
-|------------|----------|--------------|----------|
-| Development | Neon Local (ephemeral branches) | `docker-compose.dev.yml` | `.env.development` |
-| Production | Neon Cloud (direct connection) | `docker-compose.prod.yml` | `.env.production` |
+| Environment | Database                        | Compose File              | Env File           |
+| ----------- | ------------------------------- | ------------------------- | ------------------ |
+| Development | Neon Local (ephemeral branches) | `docker-compose.dev.yml`  | `.env.development` |
+| Production  | Neon Cloud (direct connection)  | `docker-compose.prod.yml` | `.env.production`  |
 
 ## Prerequisites
 
@@ -41,6 +41,7 @@ ARCJET_KEY=your_arcjet_key
 ```
 
 **How to find these values:**
+
 - **NEON_API_KEY**: Account Settings → API Keys → Create new key
 - **NEON_PROJECT_ID**: Project Settings → General → Project ID
 - **PARENT_BRANCH_ID**: Project → Branches → Select branch → Copy Branch ID
@@ -52,6 +53,7 @@ docker compose -f docker-compose.dev.yml --env-file .env.development.local up --
 ```
 
 This will:
+
 1. Start the Neon Local proxy container
 2. Create an ephemeral branch from your parent branch
 3. Build and start the application container
@@ -154,11 +156,13 @@ npm run db:migrate
 The application uses the `NEON_URI` environment variable for database connections. The `NEON_LOCAL` flag determines how the connection is configured:
 
 **Development (`NEON_LOCAL=true`):**
+
 - Connection: `postgres://neon:npg@db:5432/neondb`
 - Uses HTTP-based communication (required by Neon Local)
 - `neonConfig.fetchEndpoint` is set to the local proxy
 
 **Production (`NEON_LOCAL` not set):**
+
 - Connection: Direct Neon Cloud URL from `NEON_URI`
 - Uses standard Neon serverless driver configuration
 
@@ -203,6 +207,7 @@ docker compose -f docker-compose.dev.yml down -v
 ### Database changes not persisting in development
 
 This is expected behavior with ephemeral branches. To persist:
+
 1. Set `DELETE_BRANCH=false` in your environment
 2. Enable the volume mounts for branch persistence
 
