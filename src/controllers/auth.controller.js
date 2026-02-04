@@ -11,7 +11,7 @@ export const signUp = async (req, res, next) => {
 
     if (!validationResult.success) {
       return res.status(400).json({
-        message: "Validation failed",
+        message: 'Validation failed',
         details: formatValidationError(validationResult.error),
       });
     }
@@ -22,7 +22,7 @@ export const signUp = async (req, res, next) => {
       name,
       email,
       password,
-      role: "user",
+      role: 'user',
     });
 
     const token = jwttoken.sign({
@@ -31,10 +31,10 @@ export const signUp = async (req, res, next) => {
       role: user.role,
     });
 
-    cookies.set(res, "token", token);
+    cookies.set(res, 'token', token);
 
     res.status(201).json({
-      message: "User Registered Successfully",
+      message: 'User Registered Successfully',
       user: {
         id: user.id,
         name: user.name,

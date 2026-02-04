@@ -18,20 +18,15 @@
   "scripts": {
     "dev": "node --watch src/index.js",
     "start": "node src/index.js",
-
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-
     "dev:docker": "sh src/scripts/dev.sh",
     "prod:docker": "sh src/scripts/prod.sh",
-    
     "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "repository": {
@@ -66,6 +61,7 @@
     "drizzle-kit": "^0.31.8",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.12.2",
     "eslint-plugin-prettier": "^5.5.5",
     "jest": "^30.2.0",
     "prettier": "^3.8.1",

@@ -47,7 +47,7 @@ export const fetchUserById = async (req, res, next) => {
 
     if (!user) {
       return res.status(404).json({
-        error: "User not found",
+        error: 'User not found',
       });
     }
 
@@ -103,7 +103,7 @@ export const updateUserById = async (req, res, next) => {
     }
 
     // Allow users to update only their own information (except role)
-    if (req.user.role !== "admin" && Number(req.user.id) !== Number(id)) {
+    if (req.user.role !== 'admin' && Number(req.user.id) !== Number(id)) {
       return res.status(403).json({
         error: 'Access denied',
         message: 'You can only update your own information',

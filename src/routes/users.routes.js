@@ -1,45 +1,45 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 import {
   fetchAllUsers,
   fetchUserById,
   updateUserById,
   deleteUserById,
-} from "#controllers/users.controller.js";
+} from '#controllers/users.controller.js';
 
 import {
   authenticateToken,
   requireRole,
   allowSelfOrAdmin,
-} from "#middleware/auth.middleware.js";
+} from '#middleware/auth.middleware.js';
 
 const router = Router();
 
 router.get(
-  "/",
+  '/',
   authenticateToken,
-  requireRole("admin"),
+  requireRole('admin'),
   fetchAllUsers
 );
 
 router.get(
-  "/:id",
+  '/:id',
   authenticateToken,
   allowSelfOrAdmin,
   fetchUserById
 );
 
 router.put(
-  "/:id",
+  '/:id',
   authenticateToken,
   allowSelfOrAdmin,
   updateUserById
 );
 
 router.delete(
-  "/:id",
+  '/:id',
   authenticateToken,
-  requireRole("admin"),
+  requireRole('admin'),
   deleteUserById
 );
 
