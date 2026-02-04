@@ -1,0 +1,33 @@
+# =============================================================================
+# ACQUISITIONS - Production Docker Compose
+# Connects directly to Neon Cloud Database (no local proxy)
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # Application Service
+  # ---------------------------------------------------------------------------
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: acquisitions-app-prod
+    ports:
+      - "3000:3000"
+    env_file: 
+      - .env.production
+    restart: always
+    # Resource limits (adjust based on your deployment)
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
+
+# Note: No database service needed - connects directly to Neon Cloud
+# The NEON_URI should be set in .env.production with your Neon connection string
+# Example: postgres://user:password@ep-xyz.region.aws.neon.tech/dbname?sslmode=require

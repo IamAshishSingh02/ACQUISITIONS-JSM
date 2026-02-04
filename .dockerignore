@@ -1,0 +1,39 @@
+# Dependencies
+node_modules
+
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+
+# IDE
+.vscode
+.idea
+
+# Docker files (avoid recursive copies)
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+*.md
+!README.md
+
+# Neon Local metadata
+.neon_local
+
+# Testing
+coverage
+test-results
+
+# OS files
+.DS_Store
+Thumbs.db

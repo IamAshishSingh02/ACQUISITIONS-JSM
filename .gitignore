@@ -84,6 +84,9 @@ test-results/
 # Docker local override files
 docker-compose.override.yml
 
+# Neon Local metadata (persistent branch tracking)
+.neon_local/
+
 # =================================================
 # KUBERNETES (Optional)
 # =================================================
